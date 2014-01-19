@@ -1,4 +1,4 @@
-#A basic python api for indxi (indix.com)
+#A basic python api for [indix](http://indxi.com)
 
 Very basic use:
 
