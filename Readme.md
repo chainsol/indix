@@ -1,9 +1,9 @@
-#A basic python api for indxi (indix.com)
+#A basic python api for [indix](http://indxi.com)
 
 Very basic use:
 
      import indix
-     indix=IndixRestClient(app_id=your_app_id, app_key=your_app_key)
+     indix=indix.IndixRestClient(app_id=your_app_id, app_key=your_app_key)
 
 To search products by a query:
 
