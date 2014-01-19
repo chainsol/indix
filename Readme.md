@@ -2,8 +2,9 @@
 
 Requires:
 
-     python2.7, python3.3, or pypy2.7 with [requests](http://docs.python-requests.org/en/latest/index.html) library
-     Untested on pypy3.3.
+- python2.7, python3.3, or pypy2.7
+- [requests](http://docs.python-requests.org/en/latest/index.html) library  
+(Untested on pypy3.3)
 
 Very basic use:
 
