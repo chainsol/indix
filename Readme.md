@@ -2,16 +2,13 @@
 
 Requires:
 
-     python 2.7 and python requests
-     -OR-
-     pypy 2.7 and pypy requests
-
-Python3 and pypy3 support should be comming soon{ish}.
+     python2.7, python3.3, or pypy2.7 with [requests](http://docs.python-requests.org/en/latest/index.html) library
+     Untested on pypy3.3.
 
 Very basic use:
 
-      import indix
-      indix=indix.IndixRestClient(app_id=your_app_id, app_key=your_app_key)
+      from indix import IndixRestClient
+      indix=IndixRestClient(app_id=your_app_id, app_key=your_app_key)
 
 To search products by a query:
 
@@ -45,7 +42,8 @@ To get the json from the response:
 
 I also included a small function to make pretty printing easier:
 
-      indix.pretty_print(response.json())
+      from indix import pretty_print
+      pretty_print(response.json())
 
 
 You can also set the app_id (`INDIX_APP_ID`) and app_key (`INDIX_APP_KEY`) as environment variables, and python will (should) see them.

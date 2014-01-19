@@ -33,13 +33,13 @@ def find_credentials():
 
 def make_request(base_uri, endpoint, **kwargs):
     full_url = "%s/%s/?" % (base_uri, endpoint)
-    for key, value in kwargs.iteritems():
+    for key, value in kwargs.items():
         full_url = "%s%s=%s&" % (full_url, key, value)
     response = requests.get(full_url)
     return response
 
 def pretty_print(json_to_print, sort_keys=True):
-    print json.dumps(json_to_print, sort_keys=sort_keys, indent=4, separators=(',', ': '))
+    print(json.dumps(json_to_print, sort_keys=sort_keys, indent=4, separators=(',', ': ')))
 
 
 class IndixRestClient(object):
