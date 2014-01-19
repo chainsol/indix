@@ -3,7 +3,7 @@
 Very basic use:
 
      import indix
-     indix=IndixRestClient(app_id=your_app_id, app_key=your_app_key)
+     indix=indix.IndixRestClient(app_id=your_app_id, app_key=your_app_key)
 
 To search products by a query:
 
