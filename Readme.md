@@ -29,9 +29,13 @@ And the rest of the options for `indix.products`:
     priceHistoryAvail:  if True, will only return products with price history available
     sortBy:             one of "RELEVANCE", "PRICE_LOW_TO_HIGH", "PRICE_HIGH_TO_LOW", "MOST_RECENT", or blank
 
-And to get the json from the response:
+To get the json from the response:
 
      response.json()
+     
+I also included a small function to make pretty printing easier:
+
+      indix.pretty_print(response.json())
 
 
 You can also set the app_id (`INDIX_APP_ID`) and app_key (`INDIX_APP_KEY`) as environment variables, and python will (should) see them.
