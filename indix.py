@@ -50,7 +50,7 @@ class IndixRestClient(object):
         response = make_request(self.version_uri, "brands", query=query,
                                 app_id=self.app_id, app_key=self.app_key)
         return response
-        
+    
     def stores(self, query=None):
         response = make_request(self.version_uri, "stores", query=query,
                                 app_id=self.app_id, app_key=self.app_key)
@@ -81,4 +81,10 @@ class IndixRestClient(object):
     def pricesById(self, id=None):
         response = make_request(self.version_uri, "products/%s/prices" % id,
                                 app_id=self.app_id, app_key=self.app_key)
+        return response
+
+    def raw(self, endpoint=None, **kwargs):
+        response = make_request(self.version_uri, endpoint,
+                                app_id=self.app_id, app_key=self.app_key,
+                                **kwargs)
         return response
