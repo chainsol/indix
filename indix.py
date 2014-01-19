@@ -2,12 +2,11 @@ import requests
 import json
 import os
 
-sortBy_legal = ["RELEVANCE", "PRICE_LOW_TO_HIGH", "PRICE_HIGH_TO_LOW", "MOST_RECENT", ""]
 
 class indixException(Exception):
     pass
 
-class indixRestException(indixException): #TODO: use this
+class indixRestException(indixException):
     """ This should do something with error codes from indix. Maybe.
 
     :param int status: the error code

@@ -1,5 +1,13 @@
 #A basic python api for [indix](http://indxi.com)
 
+Requires:
+
+     python 2.7 and python requests
+     -OR-
+     pypy 2.7 and pypy requests
+
+Python3 and pypy3 support should be comming soon{ish}.
+
 Very basic use:
 
       import indix
@@ -32,7 +40,9 @@ And the rest of the options for `indix.products`:
 To get the json from the response:
 
      response.json()
-     
+
+(With pypy is seems to be necessary to remove the `()`, ie `response.json`
+
 I also included a small function to make pretty printing easier:
 
       indix.pretty_print(response.json())
