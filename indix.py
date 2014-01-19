@@ -13,7 +13,6 @@ class indixRestException(indixException):
     :param str uri: the url
     :param str msg: the message, if one exists
     """
-
     def __init__(self, status, uri, msg=""):
         self.uri=uri
         self.status=status
@@ -45,7 +44,6 @@ def pretty_print(json_to_print, sort_keys=True):
 class IndixRestClient(object):
     """
     A client for accessing the indix REST API
-
     :param str app_id: The app ID
     :param str app_key: The app key
     """
@@ -53,7 +51,6 @@ class IndixRestClient(object):
     def __init__(self, app_id=None, app_key=None, base="http://api.indix.com/api",
                  version="beta"):
         """Create a indix REST API client."""
-
         # Get account creds
         if not app_id or not app_key:
             app_id, app_key = find_credentials()
@@ -69,10 +66,8 @@ class IndixRestClient(object):
         """
         :param query: the brand you want to search for
         """
-
         response = make_request(self.version_uri, "brands", query=query,
                                 app_id=self.app_id, app_key=self.app_key)
-        
         if response.ok:
             return response
         else:
@@ -82,10 +77,8 @@ class IndixRestClient(object):
         """
         :param query: the stores you want to search for
         """
-
         response = make_request(self.version_uri, "stores", query=query,
                                 app_id=self.app_id, app_key=self.app_key)
-        
         if response.ok:
             return response
         else:
@@ -95,10 +88,8 @@ class IndixRestClient(object):
         """
         Takes not params.  Returns json for all possible catagories
         """
-
         response = make_request(self.version_uri, "categories",
                                 app_id=self.app_id, app_key=self.app_key)
-
         if response.ok:
             return response
         else:
@@ -119,7 +110,6 @@ class IndixRestClient(object):
         :priceHistoryAvail bool: if True, will only return products with price history available
         Returns: json for 10 products, dependent on the page you choose
         """
-
         response = make_request(self.version_uri, "products", pageNumber=pageNumber, query=query,
                                 storeId=storeId, brandId=brandId, categoryId=categoryId,
                                 startPrice=startPrice, endPrice=endPrice, sortBy=sortBy,
@@ -136,10 +126,8 @@ class IndixRestClient(object):
         :param pageNumber: page number
         Returns: JSON for correct page of that product
         """
-
         response = make_request(self.version_uri, "products/%s" % id, pageNumber=pageNumber,
                                 app_id=self.app_id, app_key=self.app_key)
-        
         if response.ok:
             return response
         else:
@@ -150,10 +138,8 @@ class IndixRestClient(object):
         :param id: productId from indix.products
         Returns json for price history for an item
         """
-
         response = make_request(self.version_uri, "products/%s/prices" % id,
                                 app_id=self.app_id, app_key=self.app_key)
-        
         if response.ok:
             return response
         else:
@@ -165,11 +151,8 @@ class IndixRestClient(object):
         :param **kwargs: dictionary of extra things to add to url as a GET request
         Returns: json
         """
-
         response = make_request(self.version_uri, endpoint,
-                                app_id=self.app_id, app_key=self.app_key,
-                                **kwargs)
-        
+                                app_id=self.app_id, app_key=self.app_key, **kwargs)
         if response.ok:
             return response
         else:
