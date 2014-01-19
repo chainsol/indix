@@ -7,7 +7,7 @@ Very basic use:
 
 To search products by a query:
 
-     response=indix.products(query="QUERY_GOES_HERE)
+     response=indix.products(query="QUERY_GOES_HERE")
 
 And to get the json from the response:
 
