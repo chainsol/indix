@@ -52,4 +52,4 @@ You can also set the app_id (`INDIX_APP_ID`) and app_key (`INDIX_APP_KEY`) as en
 
 If you have any questions, feel free to contact me at <matthew@mtbentley.us>.  
 Please use the issues tracker for any bugs or feature requests.  
-And as always, please feel free to submit patches.  
+And as always, please feel free to submit pull requests.  
