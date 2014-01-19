@@ -31,6 +31,10 @@ def find_credentials():
         return None, None
 
 def make_request(base_uri, endpoint, **kwargs):
+    """
+    Magic function that makes the actual HTTP request
+    Takes first two params to make the url, **kwargs get added as GET request
+    """
     full_url = "%s/%s/?" % (base_uri, endpoint)
     for key, value in kwargs.items():
         full_url = "%s%s=%s&" % (full_url, key, value)
@@ -38,6 +42,7 @@ def make_request(base_uri, endpoint, **kwargs):
     return response
 
 def pretty_print(json_to_print, sort_keys=True):
+    """A little convenience function for pretty pringing of json"""
     print(json.dumps(json_to_print, sort_keys=sort_keys, indent=4, separators=(',', ': ')))
 
 
@@ -48,8 +53,7 @@ class IndixRestClient(object):
     :param str app_key: The app key
     """
 
-    def __init__(self, app_id=None, app_key=None, base="http://api.indix.com/api",
-                 version="beta"):
+    def __init__(self, app_id=None, app_key=None, base="http://api.indix.com/api", version="beta"):
         """Create a indix REST API client."""
         # Get account creds
         if not app_id or not app_key:
@@ -65,6 +69,7 @@ class IndixRestClient(object):
     def brands(self, query=None):
         """
         :param query: the brand you want to search for
+        Returns: request object from requests.get
         """
         response = make_request(self.version_uri, "brands", query=query,
                                 app_id=self.app_id, app_key=self.app_key)
@@ -76,6 +81,7 @@ class IndixRestClient(object):
     def stores(self, query=None):
         """
         :param query: the stores you want to search for
+        Returns: request object from requests.get
         """
         response = make_request(self.version_uri, "stores", query=query,
                                 app_id=self.app_id, app_key=self.app_key)
@@ -87,6 +93,7 @@ class IndixRestClient(object):
     def categories(self):
         """
         Takes not params.  Returns json for all possible catagories
+        Returns: request object from requests.get
         """
         response = make_request(self.version_uri, "categories",
                                 app_id=self.app_id, app_key=self.app_key)
@@ -108,7 +115,7 @@ class IndixRestClient(object):
         :sortBy: must be one of: "RELEVANCE", "PRICE_LOW_TO_HIGH", "PRICE_HIGH_TO_LOW", "MOST_RECENT"
         or blank
         :priceHistoryAvail bool: if True, will only return products with price history available
-        Returns: json for 10 products, dependent on the page you choose
+        Returns: request object from requests.get for 10 products
         """
         response = make_request(self.version_uri, "products", pageNumber=pageNumber, query=query,
                                 storeId=storeId, brandId=brandId, categoryId=categoryId,
@@ -124,7 +131,7 @@ class IndixRestClient(object):
         """
         :param id: productId from indix.products
         :param pageNumber: page number
-        Returns: JSON for correct page of that product
+        Returns: request object from requests.get
         """
         response = make_request(self.version_uri, "products/%s" % id, pageNumber=pageNumber,
                                 app_id=self.app_id, app_key=self.app_key)
@@ -136,7 +143,7 @@ class IndixRestClient(object):
     def pricesById(self, id=None):
         """
         :param id: productId from indix.products
-        Returns json for price history for an item
+        Returns: request object from requests.get
         """
         response = make_request(self.version_uri, "products/%s/prices" % id,
                                 app_id=self.app_id, app_key=self.app_key)
@@ -149,7 +156,7 @@ class IndixRestClient(object):
         """
         :param endpoint: the url to all to the end of api.indix.com/api/beta/
         :param **kwargs: dictionary of extra things to add to url as a GET request
-        Returns: json
+        Returns: request object from requests.get
         """
         response = make_request(self.version_uri, endpoint,
                                 app_id=self.app_id, app_key=self.app_key, **kwargs)
